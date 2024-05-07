@@ -101,7 +101,7 @@
                 </executions>
                 <configuration>
                     <sources>
-                        <source>src/main/resources/xsd/products.xsd</source>
+                        <source>src/main/resources/xsd/pokemondata.xsd</source>
                     </sources>
                     <packageName>com.example.demosoap.gen</packageName>
                 </configuration>
