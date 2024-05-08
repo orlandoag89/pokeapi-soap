@@ -6,10 +6,14 @@ import com.example.demosoap.business.dto.WrapperRequestSaveIntDto;
 import com.example.demosoap.business.dto.enums.MethodIntEnum;
 import com.example.demosoap.dao.entites.RequestEntity;
 import com.example.demosoap.dao.entites.enums.MethodEnum;
-import com.example.demosoap.utils.IMapper;
+import com.example.demosoap.utils.IToInner;
+import com.example.demosoap.utils.IToOuter;
 
 @Component
-public class RequestEntityMapper implements IMapper<RequestEntity, WrapperRequestSaveIntDto> {
+public class RequestEntityMapper implements
+	IToInner<RequestEntity, WrapperRequestSaveIntDto>,
+	IToOuter<RequestEntity, WrapperRequestSaveIntDto> 
+	{
 
 	@Override
 	public RequestEntity toInner(final WrapperRequestSaveIntDto outer) {
@@ -18,7 +22,7 @@ public class RequestEntityMapper implements IMapper<RequestEntity, WrapperReques
 		}
 		final RequestEntity output = new RequestEntity();
 		output.setIp(outer.getIp());
-		output.setMethod(MethodEnum.valueOf(outer.getMethod().getMethod()));
+		output.setMethod(MethodEnum.valueOf(outer.getMethod().name()));
 		output.setRequestDate(outer.getRequestDate());
 		return output;
 	}
@@ -31,7 +35,7 @@ public class RequestEntityMapper implements IMapper<RequestEntity, WrapperReques
 		final WrapperRequestSaveIntDto out = new WrapperRequestSaveIntDto();
 		out.setId(inner.getIdRequest());
 		out.setIp(inner.getIp());
-		out.setMethod(MethodIntEnum.valueOf(inner.getMethod().getMethod()));
+		out.setMethod(MethodIntEnum.valueOf(inner.getMethod().name()));
 		out.setRequestDate(inner.getRequestDate());
 		return out;
 	}

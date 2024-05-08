@@ -23,5 +23,7 @@ public class PokemonResponseIntDto implements Serializable {
 	private String locationAreaEncounters;
 	
 	private List<HeldItemIntDto> heldItems;
+	
+	private List<AbilityItemIntDto> abilities;
 
 }

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import com.example.demosoap.business.dto.PokemonRequestIntDto;
 import com.example.demosoap.business.dto.enums.MethodIntEnum;
 import com.example.demosoap.gen.GetPokemonRequest;
-import com.example.demosoap.utils.IMapper;
+import com.example.demosoap.utils.IToInner;
 
 @Component
-public class GetPokemonRequestMapper implements IMapper<PokemonRequestIntDto, GetPokemonRequest> {
+public class GetPokemonRequestMapper implements IToInner<PokemonRequestIntDto, GetPokemonRequest> {
 	
 	@Autowired
 	private DeviceInfoMapper deviceInfoMapper;
@@ -26,10 +26,4 @@ public class GetPokemonRequestMapper implements IMapper<PokemonRequestIntDto, Ge
 		return output;
 	}
 
-	@Override
-	public GetPokemonRequest toOuter(final PokemonRequestIntDto inner) {
-		return null;
-	}
-
-	
 }

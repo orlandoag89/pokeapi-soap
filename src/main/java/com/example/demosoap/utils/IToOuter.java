@@ -1,8 +1,6 @@
 package com.example.demosoap.utils;
 
-public interface IMapper<I, O> {
-	
-	I toInner(O outer);
+public interface IToOuter<I, O> {
 	
 	O toOuter(I inner);
 

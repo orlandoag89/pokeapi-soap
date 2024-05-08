@@ -4,21 +4,10 @@ import org.springframework.stereotype.Component;
 
 import com.example.demosoap.business.dto.CommonDataIntDto;
 import com.example.demosoap.gen.CommonData;
-import com.example.demosoap.utils.IMapper;
+import com.example.demosoap.utils.IToOuter;
 
 @Component
-public class CommonDataMapper implements IMapper<CommonDataIntDto, CommonData> {
-
-	@Override
-	public CommonDataIntDto toInner(final CommonData outer) {
-		if (outer == null) {
-			return null;
-		}
-		final CommonDataIntDto output = new CommonDataIntDto();
-		output.setName(outer.getName());
-		output.setUrl(outer.getUrl());
-		return output;
-	}
+public class CommonDataMapper implements IToOuter<CommonDataIntDto, CommonData> {
 
 	@Override
 	public CommonData toOuter(final CommonDataIntDto inner) {

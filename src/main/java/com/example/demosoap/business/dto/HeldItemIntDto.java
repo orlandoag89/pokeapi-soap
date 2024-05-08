@@ -13,6 +13,6 @@ public class HeldItemIntDto implements Serializable {
 
 	private CommonDataIntDto item;
 	
-	private List<VersionDerailIntDto> versionDetails;
+	private List<VersionDetailIntDto> versionDetails;
 
 }
