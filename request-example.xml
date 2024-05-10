@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://www.example.com/demosoap/gen">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gen:getPokemonRequest>
+         <gen:pokemon_name>clefairy</gen:pokemon_name>
+         <gen:method>GET_POKEMON_BY_NAME</gen:method>
+         <gen:device>
+            <gen:ip>192.168.1.254</gen:ip>
+            <gen:request_date>2002-05-30T09:00:00</gen:request_date>
+         </gen:device>
+      </gen:getPokemonRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
