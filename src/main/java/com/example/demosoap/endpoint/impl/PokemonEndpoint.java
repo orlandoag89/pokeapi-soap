@@ -15,6 +15,7 @@ import com.example.demosoap.endpoint.mapper.GetPokemonRequestMapper;
 import com.example.demosoap.endpoint.mapper.GetPokemonResponseMapper;
 import com.example.demosoap.gen.GetPokemonRequest;
 import com.example.demosoap.gen.GetPokemonResponse;
+import com.example.demosoap.utils.BusinessException;
 
 @Endpoint
 public class PokemonEndpoint implements IPokemonEndpoint {
@@ -34,7 +35,7 @@ public class PokemonEndpoint implements IPokemonEndpoint {
     
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPokemonRequest")
     @ResponsePayload
-    public GetPokemonResponse getPokemonRequest(@RequestPayload final GetPokemonRequest request) {
+    public GetPokemonResponse getPokemonRequest(@RequestPayload final GetPokemonRequest request) throws BusinessException {
     	logger.info("retrieving pokemon");
     	final PokemonResponseIntDto intPokemonResponse = business.getPokemon(getPokemonRequestMapper.toInner(request));
     	logger.info("request completed");

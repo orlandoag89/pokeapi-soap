@@ -12,6 +12,7 @@ import com.example.demosoap.business.dto.PokemonResponseIntDto;
 import com.example.demosoap.business.dto.WrapperRequestSaveIntDto;
 import com.example.demosoap.business.dto.enums.MethodIntEnum;
 import com.example.demosoap.dao.IPokemonDao;
+import com.example.demosoap.utils.BusinessException;
 
 @Service
 public class PokemonBusinessImpl implements IPokemonBusiness {
@@ -25,7 +26,7 @@ public class PokemonBusinessImpl implements IPokemonBusiness {
 	private IPokeApi api;
 	
 	@Override
-	public PokemonResponseIntDto getPokemon(final PokemonRequestIntDto request) {
+	public PokemonResponseIntDto getPokemon(final PokemonRequestIntDto request) throws BusinessException {
 		logger.info("retrieving pokemon by " + request.getMethod());
 		final PokemonResponseIntDto apiResponse = api.retrievePokemonByName(request.getPokemonName());
 		logger.info("saving request data");
