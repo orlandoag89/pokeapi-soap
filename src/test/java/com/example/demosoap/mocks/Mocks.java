@@ -335,7 +335,7 @@ public class Mocks {
 	public ResponseEntity<PokemonApiDto> createResponseEntity() {
 		return new ResponseEntity<PokemonApiDto>(getPokemonApiDto(), HttpStatus.OK);
 	}
-	
+		
 	public WrapperRequestSaveIntDto getWrapperRequestSaveIntDto() {
 		final WrapperRequestSaveIntDto wrapperRequestSaveIntDto = new WrapperRequestSaveIntDto();
 		wrapperRequestSaveIntDto.setId(ANY_INT);

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
@@ -29,7 +28,7 @@ public class PokeApiImplTest {
 	@Mock
 	private PokemonApiMapper mapper;
 	
-	@Spy
+	@Mock
 	private RestTemplate restTemplate;
 	
 	@BeforeEach
@@ -42,7 +41,9 @@ public class PokeApiImplTest {
 	
 	@Test
 	void retrievePokemonByNameIsOk() throws BusinessException {
+		Mockito.when(restTemplate.getForEntity(Mockito.anyString(), Mockito.eq(PokemonApiDto.class))).thenReturn(mocks.createResponseEntity());
 		Mockito.when(mapper.toOuter(Mockito.any(PokemonApiDto.class))).thenReturn(mocks.getPokemonResponseIntDto());
+		
 		final PokemonResponseIntDto response = pokeApiImpl.retrievePokemonByName(mocks.getPokemonName());
 		
 		Assert.assertNotNull(response);
@@ -55,5 +56,6 @@ public class PokeApiImplTest {
 		Assert.assertFalse(response.getHeldItems().isEmpty());
 		
 		Mockito.verify(mapper, Mockito.atLeastOnce()).toOuter(Mockito.any(PokemonApiDto.class));
+		Mockito.verify(restTemplate, Mockito.atLeastOnce()).getForEntity(Mockito.anyString(), Mockito.eq(PokemonApiDto.class));
 	}
 }
